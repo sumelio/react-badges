@@ -7,11 +7,21 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import Badge from "./components/Badge";
-
-const element = <h1>Hello, Platzi Badges!</h1>;
+import BadgeNew from "./pages/BadgeNew";
+import "bootstrap/dist/css/bootstrap.css";
+import "./global.css";
 
 const container = document.getElementById("app");
 
 // ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(<Badge />, container);
+ReactDOM.render(
+  // <Badge
+  //   firstName="Fredito"
+  //   lastName="Lemus"
+  //   jobTitle="Full Stack developer"
+  //   twitter="sumelio"
+  //   avatar="https://i.pinimg.com/originals/70/c3/43/70c3439abdfe26efc6be65ff30ba3b48.jpg"
+  // />,
+  <BadgeNew />,
+  container
+);

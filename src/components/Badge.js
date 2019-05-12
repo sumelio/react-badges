@@ -10,11 +10,7 @@ class Badge extends React.Component {
           <img src={confLog} alt="Logo de la conferencia" />
         </div>
         <div className="Badge__section-name">
-          <img
-            className="Badge__avatar"
-            src={this.props.avatar}
-            alt="Avatar"
-          />
+          <img className="Badge__avatar" src={this.props.avatar} alt="Avatar" />
           <h1>
             {this.props.firstName} <br /> {this.props.lastName}
           </h1>

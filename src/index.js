@@ -8,8 +8,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import BadgeNew from "./pages/BadgeNew";
+import Badges from "./pages/Badges";
 import "bootstrap/dist/css/bootstrap.css";
 import "./global.css";
+import App from "./components/App";
 
 const container = document.getElementById("app");
 
@@ -22,6 +24,7 @@ ReactDOM.render(
   //   twitter="sumelio"
   //   avatar="https://i.pinimg.com/originals/70/c3/43/70c3439abdfe26efc6be65ff30ba3b48.jpg"
   // />,
-  <BadgeNew />,
+  // <Badges />,
+  <App />,
   container
 );

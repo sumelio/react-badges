@@ -2,19 +2,39 @@ import React from "react";
 
 //import logo from "../images/badge-header.svg";
 import header from "../images/platziconf-logo.svg";
-import "./styles/BadgeNew.css";
+import "./styles/BadgeEdit.css";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
+import PageLoading from "../components/PageLoading";
 import api from "../api";
 
-export default class BadgeNew extends React.Component {
+export default class BadgeEdit extends React.Component {
   state = {
+    loading: false,
+    error: null,
     form: {
       firstName: "",
       lastName: "",
       email: "",
       jobTitle: "",
       twitter: ""
+    }
+  };
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async e => {
+    try {
+      const data = await api.badges.read(this.props.match.params.badgeId);
+
+      this.setState({ loading: false, form: data });
+    } catch (error) {
+      this.setState({
+        loading: false,
+        error: error
+      });
     }
   };
 
@@ -35,7 +55,7 @@ export default class BadgeNew extends React.Component {
       error: null
     });
     try {
-      await api.badges.create(this.state.form);
+      await api.badges.update(this.props.match.params.badgeId, this.state.form);
       this.setState({
         loading: false
       });
@@ -48,11 +68,15 @@ export default class BadgeNew extends React.Component {
   };
 
   render() {
+    if (this.state.loading) {
+      return <PageLoading />;
+    }
+
     return (
       <React.Fragment>
-        <div className="BadgeNew__hero">
+        <div className="BadgeEdit__hero">
           <img
-            className="BadgeNew__hero-image img-fluid"
+            className="BadgeEdit__hero-image img-fluid"
             src={header}
             alt="header"
           />
@@ -60,7 +84,7 @@ export default class BadgeNew extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-6">
-              <h1>New Attendant</h1>
+              <h1>Edit Attendant</h1>
               <Badge
                 firstName={this.state.form.firstName || "FIRST_NAME"}
                 lastName={this.state.form.lastName || "LAST_NAME"}

@@ -139,7 +139,11 @@ class Badges extends React.Component {
             </Link>
           </div>
 
-          <BadgesList badges={this.state.data} />
+          <BadgesList badges={this.state.data}>
+            <Link to="/badges/new" className="btn btn-primary">
+              New Badge
+            </Link>
+          </BadgesList>
         </div>
       </React.Fragment>
     );
